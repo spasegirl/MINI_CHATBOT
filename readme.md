@@ -42,12 +42,11 @@ AZURE_OPENAI_ENDPOINT=your_azure_openai_endpoint
 ## Project structure 🗂️
 ```
 .
-├── .env                    # Environment variables for Azure API keys
-├── app.py                   # Flask backend
+├── .env                    
+├── app.py                   
 ├── templates
-│   └── index.html           # Frontend HTML template
-└── requirements.txt         # Python dependencies
-
+│   └── index.html           
+└── requirements.txt         
 ```
 ## Running the application 🚀
 Start the Flask server: In your terminal, run:
