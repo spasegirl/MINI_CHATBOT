@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from langchain_openai import AzureChatOpenAI
 import os
 from dotenv import load_dotenv
+from langchain_openai import AzureOpenAIEmbeddings
 
 load_dotenv()
 
@@ -16,10 +17,7 @@ llm = AzureChatOpenAI(
     request_timeout=60
 )
 
-def chat_with_gpt(prompt):
-    """Get a response from GPT-3 given a prompt."""
-    try:
-        response = llm.invoke([{"role": "user", "content": prompt}])
-        return response.content.strip()
-    except Exception as e:
-        return str(e)
+embedding_model = AzureOpenAIEmbeddings(api_key=api_key, 
+                                        azure_endpoint=api_endpoint, 
+                                        azure_deployment="text-embedding-ada-002", 
+                                        api_version="2024-05-01-preview")
