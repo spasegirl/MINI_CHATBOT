@@ -18,21 +18,20 @@ def rag_pipeline(user_input, retriever=None):
     """
     context = ""
     
-    # Attempt retrieval only if a retriever is provided
+    # retrieval only if a retriever is provided
     if retriever:
         try:
             retrieved_docs = retriever.get_relevant_documents(user_input)
             if retrieved_docs:
-                # Combine retrieved document chunks into a single context
+                # Combining retrieved document chunks into a single context
                 context = "\n".join(doc.page_content for doc in retrieved_docs)
         except Exception as e:
-            # Log retrieval errors and fall back to general knowledge
             logger.error(f"Error during document retrieval: {e}")
     
     if not context:
         context = "No relevant context found." 
     
-    # Prepare the full prompt for the LLM
+
     prompt_text = f"""
     You are an assistant that can answer questions based on a document or provide general assistance.
     When the context is provided, answer using the context; otherwise, respond directly to the user's query.
@@ -42,7 +41,7 @@ def rag_pipeline(user_input, retriever=None):
     Answer:
     """
     
-    # Get the response from the LLM
+    # response from the LLM
     response = llm.invoke([{"role": "user", "content": prompt_text}])
     
     return response.content.strip()

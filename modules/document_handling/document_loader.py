@@ -19,7 +19,7 @@ def process_pdf_for_retrieval(file_path):
         retrieval_chain (Runnable): A chain that retrieves context and generates answers.
     """
     global retriever
-    # Load the PDF
+    # Loading the PDF
     loader = PyPDFLoader(file_path)
     documents = loader.load()
 

@@ -53,7 +53,7 @@ def query():
         logger.error(f"Error in query execution: {e}")
         return jsonify({"error": "An error occurred while processing your query."}), 500
 
- # New chat route for general queries without PDF
+ # chat route for general queries without PDF
 @app.route("/chat", methods=["POST"])
 def chat():
     user_query = request.json.get("query")
