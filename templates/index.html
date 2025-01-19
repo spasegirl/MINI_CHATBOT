@@ -8,25 +8,28 @@
 </head>
 <body>
     <div class="container">
-        <h1>🤖 Enhanced GPT Chatbot</h1>
+        <h1>💅 My Personal GPT Chatbot</h1>
+
+        <!-- Upload Section -->
         <div id="upload-section">
-            <h2>Upload a PDF for Context</h2>
+            <h2>Upload a File for Context</h2>
             <form id="upload-form" method="POST" enctype="multipart/form-data">
                 <input type="file" id="pdf-file" name="file" accept=".pdf">
                 <button type="submit">Upload</button>
-            </form>            
+            </form>
             <p id="upload-message"></p>
         </div>
 
+        <!-- Chat Section -->
         <div id="chat-section">
             <h2>Chat with GPT</h2>
             <div id="chat-box">
                 <div id="chat-messages"></div>
-                <form id="query-form">
-                    <input type="text" id="user-query" placeholder="Type your question..." autocomplete="off">
-                    <button type="submit">Send</button>
-                </form>
             </div>
+            <form id="query-form">
+                <input type="text" id="user-query" placeholder="Type your question..." autocomplete="off">
+                <button type="submit">Send</button>
+            </form>
         </div>
     </div>
     <script src="/static/script.js"></script>

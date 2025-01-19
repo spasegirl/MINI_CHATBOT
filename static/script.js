@@ -34,15 +34,14 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 const error = await response.text();
                 uploadMessage.textContent = `Error: ${error}`;
-                pdfUploaded = false; // Reset the flag in case of failure
+                pdfUploaded = false;
             }
         } catch (err) {
             uploadMessage.textContent = "An error occurred during upload.";
-            pdfUploaded = false; // Reset the flag in case of failure
+            pdfUploaded = false;
         }
     });
 
-    // Handle chat queries
     // Handle chat queries
     queryForm.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -51,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!userQuery) return;
 
-        // Display user message
         const userMessage = document.createElement("div");
         userMessage.textContent = userQuery;
         userMessage.className = "user";
@@ -59,9 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         userQueryInput.value = "";
 
-        // Send query to backend
         try {
-            const endpoint = pdfUploaded ? "/query" : "/chat"; // Adjust depending on upload state
+            const endpoint = pdfUploaded ? "/query" : "/chat";
             const response = await fetch(endpoint, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -74,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
             botMessage.className = "bot";
             chatMessages.appendChild(botMessage);
 
-            // Scroll to the latest message
             chatMessages.scrollTop = chatMessages.scrollHeight;
         } catch (err) {
             const botMessage = document.createElement("div");
@@ -83,5 +79,4 @@ document.addEventListener("DOMContentLoaded", () => {
             chatMessages.appendChild(botMessage);
         }
     });
-
 });
