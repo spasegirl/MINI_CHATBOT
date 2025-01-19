@@ -2,9 +2,9 @@
 
 import os
 from werkzeug.utils import secure_filename
+from config import UPLOAD_FOLDER
 
-UPLOAD_FOLDER = "static/uploads/"
-ALLOWED_EXTENSIONS = {"pdf"}
+ALLOWED_EXTENSIONS = {'pdf', 'txt', 'jpg', 'jpeg', 'png'}
 
 def allowed_file(filename):
     """Check if the file extension is allowed."""
