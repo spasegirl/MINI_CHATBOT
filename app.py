@@ -16,17 +16,23 @@ logger = logging.getLogger(__name__)
 def index():
     global retriever
     if request.method == "POST":
-        # Handle PDF upload
+        # HandlING PDF upload
         if "file" not in request.files:
             return "No file part", 400
         file = request.files["file"]
-        filepath = save_pdf(file)
+        
+        # SavING file
+        filepath = save_file(file)
         if not filepath:
             return "Invalid file type. Please upload a PDF.", 400
+        
+        #  file handler based on the file extension
+        file_extension = filepath.rsplit('.', 1)[1].lower()
+        file_handler = get_file_handler(file_extension)
 
-        # Process PDF
+        # ProcessING the file using the corresponding handler
         try:
-            retriever = process_pdf_for_retrieval(filepath)
+            retriever = file_handler(filepath)
             logger.info("Retriever successfully created and set.")
             return "PDF uploaded and processed successfully!", 200
         except Exception as e:
@@ -34,6 +40,7 @@ def index():
             return "Failed to process the PDF file.", 500
 
     return render_template("index.html")
+
 
 
 @app.route("/query", methods=["POST"])
