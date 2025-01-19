@@ -3,8 +3,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
 
-
-from modules.gpt_module import llm, embedding_model
+from modules.gpt_module import embedding_model
 
 retriever = None
 

@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template, jsonify
-from modules.document_handling.document_upload import save_pdf
-from modules.document_handling.document_loader import process_pdf_for_retrieval, retriever
-from modules.document_handling.query_handler import rag_pipeline
+from modules.document_handling import *
+
 import logging
 from modules.gpt_module import llm
 
