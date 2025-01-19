@@ -34,12 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 const error = await response.text();
                 uploadMessage.textContent = `Error: ${error}`;
+                pdfUploaded = false; // Reset the flag in case of failure
             }
         } catch (err) {
             uploadMessage.textContent = "An error occurred during upload.";
+            pdfUploaded = false; // Reset the flag in case of failure
         }
     });
 
+    // Handle chat queries
     // Handle chat queries
     queryForm.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -58,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Send query to backend
         try {
-            const endpoint = pdfUploaded ? "/query" : "/chat";
+            const endpoint = pdfUploaded ? "/query" : "/chat"; // Adjust depending on upload state
             const response = await fetch(endpoint, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -80,4 +83,5 @@ document.addEventListener("DOMContentLoaded", () => {
             chatMessages.appendChild(botMessage);
         }
     });
+
 });

@@ -11,10 +11,10 @@
         <h1>🤖 Enhanced GPT Chatbot</h1>
         <div id="upload-section">
             <h2>Upload a PDF for Context</h2>
-            <form id="upload-form">
+            <form id="upload-form" method="POST" enctype="multipart/form-data">
                 <input type="file" id="pdf-file" name="file" accept=".pdf">
                 <button type="submit">Upload</button>
-            </form>
+            </form>            
             <p id="upload-message"></p>
         </div>
 
