@@ -35,11 +35,21 @@ AZURE_OPENAI_ENDPOINT=your_azure_openai_endpoint
 ## Project structure 🗂️
 ```
 .
-├── .env                    
-├── app.py                   
+├── .env   
+├── modules
+│   └── document_handling
+│       └── document_loader.py
+│       └── document_uploadpy  
+│       └── query_handler.py  
+│   └── gpt-module.py                                    
+├── static
+│   └── upload
+│        └── uploaded_file.pdf
+│   └── script.js
+│   └── styles.css   
 ├── templates
-│   └── index.html           
-└── requirements.txt         
+│   └── index.html         
+├── app.py       
 ```
 ## Running the application 🚀
 Start the Flask server: In your terminal, run:
@@ -50,3 +60,9 @@ python app.py
 Access the UI: Now open your browser and go to http://127.0.0.1:5000/. You should see the chatbot UI.
 
 Talk with the chatbot: Enter a message and click "Send" to receive responses from the AI model. Now you have a virtual freidn created by me. 🗣️🤖 
+
+
+## Functionalities
+
+- You are able to interact with the chatbot in real-time.
+- The chatbot allows you to upload a PDF file and ask questions regarding its content.
