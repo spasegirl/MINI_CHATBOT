@@ -23,7 +23,7 @@ source .venv/bin/activate
 Install the required dependencies plsss: 😏
 
 ```
-pip install Flask langchain_openai openai python-dotenv
+pip install Flask langchain_openai openai python-dotenv # and whatever you're missing
 ```
 Set up env variables: Create a .env file in the root of the project and add the following secret variables:
 
@@ -31,26 +31,8 @@ Set up env variables: Create a .env file in the root of the project and add the 
 AZURE_OPENAI_API_KEY=your_azure_openai_api_key
 AZURE_OPENAI_ENDPOINT=your_azure_openai_endpoint
 ```
+    
 
-## Project structure 🗂️
-```
-.
-├── .env   
-├── modules
-│   └── document_handling
-│       └── document_loader.py
-│       └── document_uploadpy  
-│       └── query_handler.py  
-│   └── gpt-module.py                                    
-├── static
-│   └── upload
-│        └── uploaded_file.pdf
-│   └── script.js
-│   └── styles.css   
-├── templates
-│   └── index.html         
-├── app.py       
-```
 ## Running the application 🚀
 Start the Flask server: In your terminal, run:
 
