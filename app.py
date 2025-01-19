@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, jsonify
 from modules.document_handling import *
+from modules.query_handling.query_handler import rag_pipeline
 
 import logging
 from modules.gpt_module import llm
