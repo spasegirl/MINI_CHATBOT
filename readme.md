@@ -11,7 +11,8 @@ This project demonstrates how to build a simple chatbot UI using Flask for the b
 1. **Clone the repository** 
 2. **Create a virtual environment**:
    ```bash
-   python -m venv .venv ```
+   python -m venv .venv 
+   ```
 Activate the virtual env:
 
 On Windows:
