@@ -3,7 +3,8 @@
 
 This project demonstrates how to build a simple chatbot UI using Flask for the backend and HTML/CSS for the frontend. The chatbot uses **Azure OpenAI** to generate responses to your queries.
 
-![alt text](image.png)
+<img src="image.png" width="300" />
+
 
 ## Installation
 
