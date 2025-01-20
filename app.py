@@ -41,7 +41,7 @@ def index():
                 image_description = get_file_handler(file_extension)(filepath)
                 return jsonify({"message": "Image uploaded and processed successfully!", "description": image_description}), 200
             else:
-                return "Unsupported file type. Please upload a PDF or image.", 400
+                return "Unsupported file type.", 400
         except Exception as e:
             logger.error(f"Error processing file: {e}")
             return jsonify({"error": f"Error processing file: {e}"}), 500
@@ -60,12 +60,13 @@ def query():
         return jsonify({"error": "Query cannot be empty."}), 400
 
     try:
-        # RAG pipeline for all queries, retriever may be None
-        response = rag_pipeline(user_query, retriever=retriever, image_description=image_description)
+        # Always pass context to the pipeline; it handles fallback internally
+        response = rag_pipeline(user_input=user_query, retriever=retriever, image_description=image_description)
         return jsonify({"response": response})
     except Exception as e:
         logger.error(f"Error in query execution: {e}")
         return jsonify({"error": "An error occurred while processing your query."}), 500
+
 
  # chat route for general queries without PDF
 @app.route("/chat", methods=["POST"])
