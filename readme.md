@@ -33,6 +33,9 @@ Set up env variables: Create a .env file in the root of the project and add the 
 ```
 AZURE_OPENAI_API_KEY=your_azure_openai_api_key
 AZURE_OPENAI_ENDPOINT=your_azure_openai_endpoint
+
+VISION_API_KEY = your_vision_api_key
+VISION_API_ENDPOINT = your_vision_api_endpoint
 ```
     
 
