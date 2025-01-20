@@ -9,8 +9,6 @@ from modules.gpt_module import llm
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "static/uploads/"
 
-retriever = None
-image_description = None
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -31,22 +29,22 @@ def index():
         
         #  file handler based on the file extension
         file_extension = filepath.rsplit('.', 1)[1].lower()
-        if file_extension in ["pdf"]:
-            try:
+        try:
+            # Resetting context
+            retriever = None
+            image_description = None
+
+            if file_extension in ["pdf"]:
                 retriever = get_file_handler(file_extension)(filepath)
                 return jsonify({"message": "PDF uploaded and processed successfully!"}), 200
-            except Exception as e:
-                logger.error(f"Error processing PDF: {e}")
-                return jsonify({"error": f"Error processing PDF: {e}"}), 500
-        elif file_extension in ["jpg", "jpeg", "png"]:
-            try:
+            elif file_extension in ["jpg", "jpeg", "png"]:
                 image_description = get_file_handler(file_extension)(filepath)
                 return jsonify({"message": "Image uploaded and processed successfully!", "description": image_description}), 200
-            except Exception as e:
-                logger.error(f"Error processing image: {e}")
-                return jsonify({"error": f"Error processing image: {e}"}), 500
-        else:
-            return "Unsupported file type. Please upload a PDF or image.", 400
+            else:
+                return "Unsupported file type. Please upload a PDF or image.", 400
+        except Exception as e:
+            logger.error(f"Error processing file: {e}")
+            return jsonify({"error": f"Error processing file: {e}"}), 500
 
     return render_template("index.html")
 
