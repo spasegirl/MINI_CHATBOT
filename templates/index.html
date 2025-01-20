@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GPT Chatbot</title>
+    <title>Galaxy GPT Chatbot</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>👑 My Personal Chatbot</h1>
+        <h1>🌌 My Personal Chatbot</h1>
 
         <!-- Upload Section -->
         <div id="upload-section">
-            <h2>Upload a File for Context</h2>
+            <h2>📤 Upload Context</h2>
             <form id="upload-form" method="POST" enctype="multipart/form-data">
                 <input type="file" id="pdf-file" name="file" accept=".pdf, .png, .jpg, .jpeg">
                 <button type="submit">Upload</button>
@@ -22,12 +23,12 @@
 
         <!-- Chat Section -->
         <div id="chat-section">
-            <h2>Chat with GPT</h2>
+            <h2>💬 Chat</h2>
             <div id="chat-box">
                 <div id="chat-messages"></div>
             </div>
             <form id="query-form">
-                <input type="text" id="user-query" placeholder="Type your question..." autocomplete="off">
+                <input type="text" id="user-query" placeholder="Ask me anything..." autocomplete="off">
                 <button type="submit">Send</button>
             </form>
         </div>
