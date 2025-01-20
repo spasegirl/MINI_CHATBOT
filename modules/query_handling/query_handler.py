@@ -19,7 +19,7 @@ def rag_pipeline(user_input, retriever=None, image_description=None):
     """
     context = ""
 
-    # Use either the image description or retriever, not both
+    # Use single context
     if image_description:
         context = f"Image description: {image_description}"
     elif retriever:

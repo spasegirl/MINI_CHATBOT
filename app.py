@@ -60,7 +60,7 @@ def query():
         return jsonify({"error": "Query cannot be empty."}), 400
 
     try:
-        # RAG pipeline for all queries; retriever may be None
+        # RAG pipeline for all queries, retriever may be None
         response = rag_pipeline(user_query, retriever=retriever, image_description=image_description)
         return jsonify({"response": response})
     except Exception as e:
@@ -76,7 +76,7 @@ def chat():
         return jsonify({"error": "Query cannot be empty."}), 400
 
     try:
-        response = rag_pipeline(user_query, retriever=None, image_description=None)  # No retriever here
+        response = rag_pipeline(user_query, retriever=None, image_description=None)
         return jsonify({"response": response})
     except Exception as e:
         logger.error(f"Error in chat execution: {e}")
