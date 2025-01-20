@@ -2,11 +2,15 @@ from flask import Flask, request, render_template, jsonify
 from modules.document_handling import get_file_handler, save_file
 from modules.query_handling.query_handler import rag_pipeline
 from modules.document_handling.file_processer import FileProcessor
+import tempfile
+
 
 import logging
 from modules.gpt_module import llm
 
 app = Flask(__name__)
+
+UPLOAD_FOLDER = tempfile.mkdtemp()
 app.config["UPLOAD_FOLDER"] = "static/uploads/"
 
 
