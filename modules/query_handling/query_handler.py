@@ -5,7 +5,7 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 
-def rag_pipeline(user_input, retriever=None):
+def rag_pipeline(user_input, retriever=None, image_description= None):
     """
     Unified pipeline for both RetrievalQA and direct LLM interaction.
     
@@ -19,17 +19,21 @@ def rag_pipeline(user_input, retriever=None):
     context = ""
     
     # retrieval only if a retriever is provided
-    if retriever:
+    if image_description:
+        context = f"Image description: {image_description}"
+    # Otherwise, try to retrieve documents if a retriever is provided
+    elif retriever:
         try:
             retrieved_docs = retriever.get_relevant_documents(user_input)
             if retrieved_docs:
-                # Combining retrieved document chunks into a single context
+                # Combine retrieved document chunks into a single context
                 context = "\n".join(doc.page_content for doc in retrieved_docs)
         except Exception as e:
             logger.error(f"Error during document retrieval: {e}")
     
+    # Fallback if no context is available
     if not context:
-        context = "No relevant context found." 
+        context = "No relevant context found."
     
 
     prompt_text = f"""

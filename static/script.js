@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const file = fileInput.files[0];
 
         if (!file) {
-            uploadMessage.textContent = "Please select a PDF file.";
+            uploadMessage.textContent = "Please select a valid file.";
             return;
         }
 
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (response.ok) {
-                uploadMessage.textContent = "PDF uploaded successfully! You can now ask questions about it.";
+                uploadMessage.textContent = "File uploaded successfully!";
                 pdfUploaded = true;
             } else {
                 const error = await response.text();
